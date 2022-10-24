@@ -14,5 +14,5 @@ For creating a new component go to frontend/src/app and run:
 
 1. Create a new Flask Virtual Environment (preferably outside the project directory)
 2. Install dependencies by running: pip install -r requirements.txt
-3. Run the app.py
+3. Run the app.py: python3 app.py
 
