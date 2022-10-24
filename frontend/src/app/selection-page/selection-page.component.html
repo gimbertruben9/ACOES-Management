@@ -1,0 +1,16 @@
+
+<div class="page-content">
+  <div>
+    <form class="selector">
+      <label class="selector-label">Select an option</label>
+      <select class="selects" [(ngModel)]="selectedOption" name="selection" (change)="changeSelect($event)">
+        <option *ngFor="let option of listOptions" [value]="option">
+          {{option}}
+        </option>
+      </select>
+      <mat-button-toggle class="accept-btn" (click)="onAccept()">
+        Accept
+      </mat-button-toggle>
+    </form>
+  </div>
+</div>

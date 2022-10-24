@@ -1,0 +1,4 @@
+/backend/dist/
+/backend/instance/
+/backend/migrations/
+/identifier.sqlite

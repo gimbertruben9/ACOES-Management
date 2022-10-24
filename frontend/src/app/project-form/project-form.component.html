@@ -1,0 +1,25 @@
+
+<div class="page-content">
+  <div>
+    <form class="form-content">
+      <label class="label-form">Project Form</label>
+      <div class="inputs">
+        <div class="input">
+          <label>A: </label>
+          <input type="text" name="a" [(ngModel)]="a">
+        </div>
+        <div class="input">
+          <label>B: </label>
+          <input type="text" name="b" [(ngModel)]="b">
+        </div>
+        <div class="input">
+          <label>C: </label>
+          <input type="text" name="c" [(ngModel)]="c">
+        </div>
+      </div>
+      <mat-button-toggle class="btn-add" (click)="onAccept()">
+      Accept
+      </mat-button-toggle>
+    </form>
+  </div>
+</div>

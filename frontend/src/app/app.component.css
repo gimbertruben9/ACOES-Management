@@ -1,0 +1,12 @@
+
+.e-toolbar {
+  background-color: lightblue;
+  border: 5px solid lightblue;
+}
+
+.text-span {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
