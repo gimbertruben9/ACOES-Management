@@ -19,8 +19,7 @@ export class AddService {
   }
 
   add_project(project: Project): Observable<Project> {
-    console.log('Post Project', project)
-    console.log('baseApiUrl', `${environment.baseApiUrl}/project`)
+    console.log('Post Project', project);
     return this.http.post<Project>(`${environment.baseApiUrl}/project`, project);
   }
 
@@ -29,4 +28,13 @@ export class AddService {
     return this.http.post<Person>(`${environment.baseApiUrl}/person`, person);
   }
 
+  get_projects(): Observable<any> {
+    console.log('Get Projects');
+    return this.http.get<any>(`${environment.baseApiUrl}/projects`);
+  }
+
+  get_people(): Observable<any>{
+    console.log('Get People')
+    return this.http.get<any>(`${environment.baseApiUrl}/people`)
+  }
 }

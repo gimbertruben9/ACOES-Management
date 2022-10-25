@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'project-form', component: ProjectFormComponent, pathMatch: 'full'},
   {path: 'person-form', component: PersonFormComponent, pathMatch: 'full'},
   {path: 'projects-list', component: ProjectsListComponent, pathMatch: 'full'},
-  {path: 'people-list', component: PeopleListComponent, pathMatch: 'full'}
+  {path: 'people-list', component: PeopleListComponent, pathMatch: 'full'},
+  {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({

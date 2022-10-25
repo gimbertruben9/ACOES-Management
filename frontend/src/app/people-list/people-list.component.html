@@ -1,1 +1,30 @@
-<p>people-list works!</p>
+<div class="page-content">
+  <h1 class="title">Personas</h1>
+  <div class="table-content">
+    <div class="add-btn-container"><button mat-icon-button class="btn-add"></button></div>
+    <ng-container class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Acción</th>
+            <th scope="col">D</th>
+            <th scope="col">E</th>
+            <th scope="col">F</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of perList">
+          <th scope="row">
+            <button mat-icon-button class="btn-edit"></button>
+            <button mat-icon-button class="btn-delete"></button>
+          </th>
+          <td>{{person.d}}</td>
+          <td>{{person.e}}</td>
+          <td>{{person.f}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <label>Showing {{perList.length}}</label>
+  </div>
+</div>

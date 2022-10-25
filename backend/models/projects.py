@@ -3,6 +3,7 @@ from db import db
 
 class ProjectsModel(db.Model):
     __tablename__ = 'projects'  # this is the table name
+    __table_args__ = (db.UniqueConstraint('a', 'b', 'c'),)
 
     def __init__(self, a, b, c):
         self.a = a
@@ -10,9 +11,9 @@ class ProjectsModel(db.Model):
         self.c = c
 
     id = db.Column(db.Integer, primary_key=True)
-    a = db.Column(db.String(30), unique=True)
-    b = db.Column(db.String(30), unique=True)
-    c = db.Column(db.String(30), unique=True)
+    a = db.Column(db.String(30), nullable=False)
+    b = db.Column(db.String(30), nullable=False)
+    c = db.Column(db.String(30), nullable=False)
 
     def json(self):
         return {'id': self.id, 'a': self.a, 'b': self.b, 'c': self.c}

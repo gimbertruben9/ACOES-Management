@@ -17,6 +17,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { PeopleListComponent } from './people-list/people-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -26,19 +29,22 @@ import { PeopleListComponent } from './people-list/people-list.component';
     SelectionPageComponent,
     ProjectsListComponent,
     PeopleListComponent,
+    NavbarComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        MatToolbarModule,
-        MatRadioModule,
-        MatButtonToggleModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatRadioModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

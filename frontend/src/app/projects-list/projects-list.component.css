@@ -1,0 +1,47 @@
+.table-content {
+  margin-top: 25px;
+  width: 750px;
+  background-color: #0792C7;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal */
+  justify-content: start; /* vertical */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #B7DBE9;
+}
+
+.title {
+  font-size: 36px;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+.btn-edit {
+  height: 20px;
+  width: 20px;
+  background-image: url("https://img.icons8.com/ios-glyphs/20/000000/edit.png");
+  margin-right: 10px;
+}
+
+.btn-delete {
+  height: 20px;
+  width: 20px;
+  background-image: url("https://img.icons8.com/ios-glyphs/20/000000/filled-trash.png");
+}
+
+.btn-add {
+  height: 30px;
+  width: 30px;
+  background-image: url("https://img.icons8.com/ios-glyphs/30/000000/add--v1.png");
+}
+
+.add-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}

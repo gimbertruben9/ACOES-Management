@@ -6,7 +6,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
+  background-color: #B7DBE9;
 }
 
 .selector {
@@ -15,9 +15,9 @@
   align-items: center;
   height: 150px;
   width: 200px;
-  border: 1px solid black;
+  border: 1px solid #013042;
   border-radius: 5px;
-  background-color: lightblue;
+  background-color: #0792C7;
 }
 
 
@@ -37,7 +37,7 @@
 .accept-btn {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: antiquewhite;
+  background-color: #B7DBE9;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #013042;
 }

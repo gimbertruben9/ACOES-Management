@@ -3,6 +3,7 @@ from db import db
 
 class PeopleModel(db.Model):
     __tablename__ = 'people'  # this is the table name
+    __table_args__ = (db.UniqueConstraint('d', 'e', 'f'),)
 
     def __init__(self, d, e, f):
         self.d = d
@@ -10,9 +11,9 @@ class PeopleModel(db.Model):
         self.f = f
 
     id = db.Column(db.Integer, primary_key=True)
-    d = db.Column(db.String(30), unique=True)
-    e = db.Column(db.String(30), unique=True)
-    f = db.Column(db.String(30), unique=True)
+    d = db.Column(db.String(30), nullable=False)
+    e = db.Column(db.String(30), nullable=False)
+    f = db.Column(db.String(30), nullable=False)
 
     def json(self):
         return {'id': self.id, 'd': self.d, 'e': self.e, 'f': self.f}
