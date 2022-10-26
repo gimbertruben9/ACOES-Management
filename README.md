@@ -22,3 +22,7 @@ For creating a new component (view) go to frontend/src/app and run:
     - flask --app app db upgrade
 4. For running the app.py: python3 app.py
 
+## Executing all
+
+1. cd frontend and npm run build
+2. cd backend and python3 app.py
