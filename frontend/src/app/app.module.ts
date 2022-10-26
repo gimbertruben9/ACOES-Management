@@ -20,6 +20,7 @@ import { PeopleListComponent } from './people-list/people-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { EditProjectFormComponent } from './edit-project-form/edit-project-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {MatIconModule} from "@angular/material/icon";
     ProjectsListComponent,
     PeopleListComponent,
     NavbarComponent,
+    EditProjectFormComponent,
   ],
   imports: [
     BrowserModule,

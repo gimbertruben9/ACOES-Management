@@ -1,7 +1,7 @@
 <div class="page-content">
   <h1 class="title">Personas</h1>
   <div class="table-content">
-    <div class="add-btn-container"><button mat-icon-button class="btn-add"></button></div>
+    <div class="add-btn-container"><button mat-icon-button class="btn-add" (click)="addPerson()"></button></div>
     <ng-container class="table-responsive">
       <table class="table">
         <thead>
@@ -15,8 +15,8 @@
         <tbody>
           <tr *ngFor="let person of perList">
           <th scope="row">
-            <button mat-icon-button class="btn-edit"></button>
-            <button mat-icon-button class="btn-delete"></button>
+            <button mat-icon-button class="btn-edit" (click)="editPerson()"></button>
+            <button mat-icon-button class="btn-delete" (click)="deletePerson(person)"></button>
           </th>
           <td>{{person.d}}</td>
           <td>{{person.e}}</td>

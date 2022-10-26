@@ -37,4 +37,16 @@ export class AddService {
     console.log('Get People')
     return this.http.get<any>(`${environment.baseApiUrl}/people`)
   }
+
+  delete_project(id: number): Observable<Object> {
+    console.log("Delete project: ", id)
+    console.log("URL: ", `${environment.baseApiUrl}/project/${id}`)
+    return this.http.delete(`${environment.baseApiUrl}/project/${id}`)
+  }
+
+  delete_person(id: number): Observable<Object> {
+    console.log("Delete person: ", id)
+    console.log("URL: ", `${environment.baseApiUrl}/person/${id}`)
+    return this.http.delete(`${environment.baseApiUrl}/person/${id}`)
+  }
 }
