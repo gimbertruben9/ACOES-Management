@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AddService} from "../services/add.service";
 import {Person} from "../models/person";
 import {Router} from "@angular/router";
+
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-people-list',
@@ -11,8 +13,9 @@ import {Router} from "@angular/router";
 export class PeopleListComponent implements OnInit {
 
   perList: Person[] = [];
+  personEdit!: Person;
 
-  constructor(private addService: AddService, private router : Router) { }
+  constructor(private addService: AddService, private router : Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.get_all_people()
@@ -30,10 +33,6 @@ export class PeopleListComponent implements OnInit {
     this.router.navigate(['/person-form']);
   }
 
-  editPerson() {
-
-  }
-
   deletePerson(person: Person) {
     console.log("Deleting person: ", person)
     if (person.id !== undefined){
@@ -41,4 +40,43 @@ export class PeopleListComponent implements OnInit {
       window.location.reload()
     }
   }
+
+  editPerson(person: Person) {
+    if (person.id !== undefined) {
+      this.openDialog(person.id)
+    }
+  }
+
+  openDialog(id: number): void {
+    const dialogRef = this.dialog.open(EditPersonDialog, {
+      width: '300px',
+      data: {id: id, d: '', e: '', f: ''}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.personEdit = result;
+      this.addService.putPerson(this.personEdit).subscribe(person => {
+        console.log("Person edited: ", person)
+        window.location.reload()
+      });
+    });
+  }
 }
+
+@Component({
+  selector: 'person-dialog.component',
+  templateUrl: 'person-dialog.component.html',
+  styleUrls: ['./people-list.component.css']
+})
+export class EditPersonDialog {
+  constructor(
+    public dialogRef: MatDialogRef<EditPersonDialog>,
+    @Inject(MAT_DIALOG_DATA) public person: Person,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+

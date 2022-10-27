@@ -66,11 +66,11 @@ class Project(Resource):
 
             if project:
                 if data['a']:
-                    project.name = data['a']
+                    project.a = data['a']
                 if data['b']:
-                    project.category = data['b']
+                    project.b = data['b']
                 if data['c']:
-                    project.sport = data['c']
+                    project.c = data['c']
 
             try:
                 project.save_to_db()
@@ -125,11 +125,11 @@ class Person(Resource):
 
             if person:
                 if data['d']:
-                    person.name = data['d']
+                    person.d = data['d']
                 if data['e']:
-                    person.category = data['e']
+                    person.e = data['e']
                 if data['f']:
-                    person.sport = data['f']
+                    person.f = data['f']
 
             try:
                 person.save_to_db()
@@ -157,4 +157,4 @@ api.add_resource(Person, '/person/<int:id>', '/person')
 api.add_resource(PeopleList, '/people')
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=3000, debug=True)

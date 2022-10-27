@@ -2,28 +2,28 @@
   <h1 class="title">Proyectos</h1>
   <div class="table-content">
     <div class="add-btn-container"><button mat-icon-button class="btn-add" (click)="addProject()"></button></div>
-    <ng-container class="table-responsive-sm">
+    <ng-container class="table-responsive">
       <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Acción</th>
-          <th scope="col">A</th>
-          <th scope="col">B</th>
-          <th scope="col">C</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let project of proList">
-          <th scope="row">
-            <button mat-icon-button class="btn-edit" (click)="editProject()"></button>
-            <button mat-icon-button class="btn-delete" (click)="deleteProject(project)"></button>
-          </th>
-          <td>{{project.a}}</td>
-          <td>{{project.b}}</td>
-          <td>{{project.c}}</td>
-        </tr>
-      </tbody>
-    </table>
+        <thead>
+          <tr>
+            <th scope="col">Acción</th>
+            <th scope="col">A</th>
+            <th scope="col">B</th>
+            <th scope="col">C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of proList">
+            <th scope="row">
+              <button mat-icon-button class="btn-edit" (click)="editProject(project)"></button>
+              <button mat-icon-button class="btn-delete" (click)="deleteProject(project)"></button>
+            </th>
+            <td>{{project.a}}</td>
+            <td>{{project.b}}</td>
+            <td>{{project.c}}</td>
+          </tr>
+        </tbody>
+      </table>
     </ng-container>
     <label>Showing {{proList.length}}</label>
   </div>

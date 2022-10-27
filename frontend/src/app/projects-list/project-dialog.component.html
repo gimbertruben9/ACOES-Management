@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Edita el proyecto</h1>
+<div class="edit-dialog" mat-dialog-content>
+  <mat-form-field class="dialog inputs" appearance="fill">
+    <mat-label>A</mat-label>
+    <input matInput [(ngModel)]="project.a">
+  </mat-form-field>
+  <mat-form-field class="dialog inputs" appearance="fill">
+    <mat-label>B</mat-label>
+    <input matInput [(ngModel)]="project.b">
+  </mat-form-field>
+  <mat-form-field class="dialog inputs" appearance="fill">
+    <mat-label>C</mat-label>
+    <input matInput [(ngModel)]="project.c">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button [disabled]="project.a=='' && project.b=='' && project.c==''" mat-button [mat-dialog-close]="project" cdkFocusInitial>Guardar cambios</button>
+</div>

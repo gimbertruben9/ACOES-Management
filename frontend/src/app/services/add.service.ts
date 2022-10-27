@@ -49,4 +49,14 @@ export class AddService {
     console.log("URL: ", `${environment.baseApiUrl}/person/${id}`)
     return this.http.delete(`${environment.baseApiUrl}/person/${id}`)
   }
+
+  putProject(project: Project): Observable<Project> {
+    console.log('Put Project', project);
+    return this.http.put<Project>(`${environment.baseApiUrl}/project/${project.id}`, project);
+  }
+
+  putPerson(person: Person): Observable<Person> {
+    console.log('Put Person', person);
+    return this.http.put<Person>(`${environment.baseApiUrl}/person/${person.id}`, person);
+  }
 }

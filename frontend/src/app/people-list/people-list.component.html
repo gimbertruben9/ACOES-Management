@@ -14,14 +14,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let person of perList">
-          <th scope="row">
-            <button mat-icon-button class="btn-edit" (click)="editPerson()"></button>
-            <button mat-icon-button class="btn-delete" (click)="deletePerson(person)"></button>
-          </th>
-          <td>{{person.d}}</td>
-          <td>{{person.e}}</td>
-          <td>{{person.f}}</td>
-        </tr>
+            <th scope="row">
+              <button mat-icon-button class="btn-edit" (click)="editPerson(person)"></button>
+              <button mat-icon-button class="btn-delete" (click)="deletePerson(person)"></button>
+            </th>
+            <td>{{person.d}}</td>
+            <td>{{person.e}}</td>
+            <td>{{person.f}}</td>
+          </tr>
         </tbody>
       </table>
     </ng-container>

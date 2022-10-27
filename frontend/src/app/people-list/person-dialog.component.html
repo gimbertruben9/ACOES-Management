@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Edita la persona</h1>
+<div mat-dialog-content class="edit-dialog">
+  <mat-form-field class="dialog inputs" appearance="fill">
+    <mat-label>D</mat-label>
+    <input matInput [(ngModel)]="person.d">
+  </mat-form-field>
+  <mat-form-field class="dialog inputs" appearance="fill">
+    <mat-label>E</mat-label>
+    <input matInput [(ngModel)]="person.e">
+  </mat-form-field>
+  <mat-form-field class="dialog inputs" appearance="fill">
+    <mat-label>F</mat-label>
+    <input matInput [(ngModel)]="person.f">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button [disabled]="person.d=='' && person.e=='' && person.f==''" mat-button [mat-dialog-close]="person" cdkFocusInitial>Guardar cambios</button>
+</div>
