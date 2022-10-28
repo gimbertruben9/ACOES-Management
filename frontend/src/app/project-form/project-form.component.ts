@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Project} from "../models/project";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AddService} from "../services/add.service";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-project-form',
@@ -16,7 +17,7 @@ export class ProjectFormComponent implements OnInit {
   sessionProject!: Project
 
   constructor(private router : Router, private route :
-    ActivatedRoute, private addService: AddService) { }
+    ActivatedRoute, private addService: AddService, private _location: Location) { }
 
   ngOnInit(): void {
   }
@@ -32,11 +33,8 @@ export class ProjectFormComponent implements OnInit {
     this.b = '';
     this.c = '';
 
-    if (true){
-      this.addService.add_project(newProject).subscribe( (project) => this.sessionProject=project);
-      this.router.navigate(['/']);
-      return;
-    }
+    this.addService.add_project(newProject).subscribe((project) => this.sessionProject = project);
+    this._location.back();
 
   }
 }

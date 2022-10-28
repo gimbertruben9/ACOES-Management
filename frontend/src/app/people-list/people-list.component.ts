@@ -34,10 +34,12 @@ export class PeopleListComponent implements OnInit {
   }
 
   deletePerson(person: Person) {
-    console.log("Deleting person: ", person)
-    if (person.id !== undefined){
-      this.addService.delete_person(person.id).subscribe(() => console.log("person deleted"));
-      window.location.reload()
+    if(confirm("Estás seguro que quieres eliminar la persona?")) {
+      console.log("Deleting person: ", person)
+      if (person.id !== undefined) {
+        this.addService.delete_person(person.id).subscribe(() => console.log("person deleted"));
+        window.location.reload()
+      }
     }
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Person} from "../models/person";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AddService} from "../services/add.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-person-form',
@@ -17,7 +18,7 @@ export class PersonFormComponent implements OnInit {
   sessionPerson!: Person
 
   constructor(private router : Router, private route :
-    ActivatedRoute, private addService: AddService) { }
+    ActivatedRoute, private addService: AddService, private _location: Location) { }
 
   ngOnInit(): void {
   }
@@ -33,11 +34,8 @@ export class PersonFormComponent implements OnInit {
     this.e = '';
     this.f = '';
 
-    if (true){
-      this.addService.add_person(newPerson).subscribe( (person) => this.sessionPerson=person);
-      this.router.navigate(['/']);
-      return;
-    }
+    this.addService.add_person(newPerson).subscribe((person) => this.sessionPerson = person);
+    this._location.back();
 
   }
 }

@@ -34,11 +34,15 @@ export class ProjectsListComponent implements OnInit {
   }
 
   deleteProject(project: Project) {
-    console.log("Deleting project: ", project)
-    if (project.id !== undefined){
-      this.addService.delete_project(project.id).subscribe(() => console.log("project deleted"));
-      window.location.reload()
+    if(confirm("Estás seguro que quieres eliminar el proyecto?")) {
+      console.log("Deleting project: ", project)
+      if (project.id !== undefined){
+        this.addService.delete_project(project.id).subscribe(() => console.log("project deleted"));
+        window.location.reload()
+      }
     }
+
+
   }
 
   editProject(project: Project) {
