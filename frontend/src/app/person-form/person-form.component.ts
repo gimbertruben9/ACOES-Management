@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Person} from "../models/person";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AddService} from "../services/add.service";
+import {Services} from "../services/services";
 import {Location} from "@angular/common";
 
 @Component({
@@ -18,7 +18,7 @@ export class PersonFormComponent implements OnInit {
   sessionPerson!: Person
 
   constructor(private router : Router, private route :
-    ActivatedRoute, private addService: AddService, private _location: Location) { }
+    ActivatedRoute, private services: Services, private _location: Location) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +34,7 @@ export class PersonFormComponent implements OnInit {
     this.e = '';
     this.f = '';
 
-    this.addService.add_person(newPerson).subscribe((person) => this.sessionPerson = person);
+    this.services.add_person(newPerson).subscribe((person) => this.sessionPerson = person);
     this._location.back();
 
   }

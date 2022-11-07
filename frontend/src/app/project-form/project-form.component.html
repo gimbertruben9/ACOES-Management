@@ -2,24 +2,30 @@
 <div class="page-content">
   <div>
     <form class="form-content">
-      <label class="label-form">Project Form</label>
+      <label class="label-form">Alta Proyecto</label>
       <div class="inputs">
         <div class="input">
-          <label>A: </label>
-          <input type="text" name="a" [(ngModel)]="a">
+          <label style="margin-bottom: 10px" class="input-label">Nombre Proyecto</label>
+          <label class="input-label">CECO</label>
         </div>
         <div class="input">
-          <label>B: </label>
-          <input type="text" name="b" [(ngModel)]="b">
-        </div>
-        <div class="input">
-          <label>C: </label>
-          <input type="text" name="c" [(ngModel)]="c">
+          <input style="margin-bottom: 5px" type="text" name="a" [(ngModel)]="a">
+          <select class="form-select form-select-sm" aria-label="Default select example">
+            <option selected>Escoge una opción</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
       </div>
-      <mat-button-toggle class="btn-add" (click)="onAccept()">
-      Accept
-      </mat-button-toggle>
+      <div class="form-buttons">
+        <button class="btn btn-sm btn-cancel" (click)="onCancel()">
+        Cancelar
+        </button>
+        <button [disabled]="a==''" class="btn btn-sm btn-save" (click)="onAccept()">
+        Guardar
+        </button>
+      </div>
     </form>
   </div>
 </div>

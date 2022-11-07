@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Project} from "../models/project";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AddService} from "../services/add.service";
+import {Services} from "../services/services";
 import {Location} from '@angular/common';
 
 @Component({
@@ -11,13 +11,13 @@ import {Location} from '@angular/common';
 })
 export class ProjectFormComponent implements OnInit {
 
-  a!: string
-  b!: string
-  c!: string
+  a: string = ''
+  b: string = ''
+  c: string = ''
   sessionProject!: Project
 
   constructor(private router : Router, private route :
-    ActivatedRoute, private addService: AddService, private _location: Location) { }
+    ActivatedRoute, private services: Services, private _location: Location) { }
 
   ngOnInit(): void {
   }
@@ -33,8 +33,12 @@ export class ProjectFormComponent implements OnInit {
     this.b = '';
     this.c = '';
 
-    this.addService.add_project(newProject).subscribe((project) => this.sessionProject = project);
+    //this.services.add_project(newProject).subscribe((project) => this.sessionProject = project);
     this._location.back();
 
+  }
+
+  onCancel() {
+    this._location.back();
   }
 }

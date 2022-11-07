@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {AddService} from "../services/add.service";
+import {Services} from "../services/services";
 import {Person} from "../models/person";
 import {Router} from "@angular/router";
 
@@ -15,7 +15,7 @@ export class PeopleListComponent implements OnInit {
   perList: Person[] = [];
   personEdit!: Person;
 
-  constructor(private addService: AddService, private router : Router, public dialog: MatDialog) { }
+  constructor(private services: Services, private router : Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.get_all_people()
@@ -23,7 +23,7 @@ export class PeopleListComponent implements OnInit {
 
   private get_all_people() {
     this.perList = []
-    this.addService.get_people().subscribe(people => {
+    this.services.get_people().subscribe(people => {
       this.perList = people['people']
     });
     console.log("All people", this.perList)
@@ -37,7 +37,7 @@ export class PeopleListComponent implements OnInit {
     if(confirm("Estás seguro que quieres eliminar la persona?")) {
       console.log("Deleting person: ", person)
       if (person.id !== undefined) {
-        this.addService.delete_person(person.id).subscribe(() => console.log("person deleted"));
+        this.services.delete_person(person.id).subscribe(() => console.log("person deleted"));
         window.location.reload()
       }
     }
@@ -58,7 +58,7 @@ export class PeopleListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.personEdit = result;
-      this.addService.putPerson(this.personEdit).subscribe(person => {
+      this.services.putPerson(this.personEdit).subscribe(person => {
         console.log("Person edited: ", person)
         window.location.reload()
       });

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectionPageComponent } from './selection-page.component';
+import { DocumentsListComponent } from './documents-list.component';
 
-describe('SelectionPageComponent', () => {
-  let component: SelectionPageComponent;
-  let fixture: ComponentFixture<SelectionPageComponent>;
+describe('DocumentsListComponent', () => {
+  let component: DocumentsListComponent;
+  let fixture: ComponentFixture<DocumentsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectionPageComponent ]
+      declarations: [ DocumentsListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SelectionPageComponent);
+    fixture = TestBed.createComponent(DocumentsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

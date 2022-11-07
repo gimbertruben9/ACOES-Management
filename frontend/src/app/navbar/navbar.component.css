@@ -1,0 +1,29 @@
+.navbars-container {
+  background-color: #015d96;
+}
+
+.navbar-1 {
+  padding-top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.navbar-2 {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.nav-btn-active {
+  width: 200px;
+  color: white;
+  border-radius: 10px;
+  background-color: #029ef1;
+}
+
+.nav-btn-unactive {
+  width: 200px;
+  color: white;
+  border-radius: 10px;
+  background-color: #029ef1;
+  opacity: 50%;
+}

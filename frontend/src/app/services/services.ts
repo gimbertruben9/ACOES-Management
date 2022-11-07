@@ -11,7 +11,7 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 
-export class AddService {
+export class Services {
   error!: string
 
   constructor(private http:HttpClient) {
