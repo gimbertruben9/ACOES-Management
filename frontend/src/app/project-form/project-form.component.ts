@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Project} from "../models/project";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Services} from "../services/services";
@@ -40,5 +40,30 @@ export class ProjectFormComponent implements OnInit {
 
   onCancel() {
     this._location.back();
+  }
+}
+
+@Component({
+  selector: 'app-admin-form',
+  templateUrl: './admin-form.component.html',
+  styleUrls: ['./project-form.component.css']
+})
+export class AdminFormComponent implements OnInit {
+
+  projectName: string | null = ''
+
+  constructor(private router : Router, private route :
+    ActivatedRoute, private services: Services, private _location: Location) { }
+
+  ngOnInit(): void {
+    this.projectName = this.route.snapshot.paramMap.get('projectName')
+  }
+
+  onCancel() {
+    this._location.back();
+  }
+
+  onAccept() {
+
   }
 }

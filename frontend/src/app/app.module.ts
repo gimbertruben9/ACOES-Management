@@ -6,7 +6,7 @@ import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjectFormComponent } from './project-form/project-form.component';
+import { ProjectFormComponent, AdminFormComponent } from './project-form/project-form.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
@@ -15,7 +15,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {EditProjectDialog, ProjectsListComponent} from './projects-list/projects-list.component';
+import {ProjectsListComponent} from './projects-list/projects-list.component';
 import {EditPersonDialog, PeopleListComponent} from './people-list/people-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatButtonModule} from "@angular/material/button";
@@ -34,9 +34,9 @@ import { DocumentsListComponent } from './documents-list/documents-list.componen
     ProjectsListComponent,
     PeopleListComponent,
     NavbarComponent,
-    EditProjectDialog,
     EditPersonDialog,
-    DocumentsListComponent
+    DocumentsListComponent,
+    AdminFormComponent
   ],
   imports: [
     BrowserModule,

@@ -8,13 +8,13 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
-  styleUrls: ['./projects-list.component.css']
+  styleUrls: ['./projects-list.component.css'],
 })
 export class ProjectsListComponent implements OnInit {
 
   proList: Project[] = [];
-  projectEdit!: Project;
-  projectAdd!: Project;
+
+  projectName: string = '';
 
   constructor(private services: Services, private router : Router, public dialog: MatDialog) { }
 
@@ -32,7 +32,6 @@ export class ProjectsListComponent implements OnInit {
 
   addProject() {
     this.router.navigate(['/project-form'])
-    //this.openAddDialog()
   }
 
   deleteProject(project: Project) {
@@ -48,46 +47,11 @@ export class ProjectsListComponent implements OnInit {
   }
 
   editProject(project: Project) {
-    if (project.id !== undefined) {
-      this.openEditDialog(project.id)
-    }
-  }
 
-  openEditDialog(id: number): void {
-    const dialogRef = this.dialog.open(EditProjectDialog, {
-      width: '300px',
-      data: {id: id, a: '', b: '', c: ''}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.projectEdit = result;
-      this.services.putProject(this.projectEdit).subscribe(project => {
-        console.log("Project edited: ", project)
-        window.location.reload()
-      });
-    });
   }
 
   adminProject(project: Project) {
-
+    this.projectName = project.a
+    this.router.navigate(['/admin-form', project.a])
   }
 }
-
-
-@Component({
-  selector: 'edit-project-dialog.component',
-  templateUrl: 'edit-project-dialog.component.html',
-  styleUrls: ['./projects-list.component.css']
-})
-export class EditProjectDialog {
-  constructor(
-    public dialogRef: MatDialogRef<EditProjectDialog>,
-    @Inject(MAT_DIALOG_DATA) public project: Project,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
-
