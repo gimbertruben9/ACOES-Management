@@ -1,9 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Project} from "../models/project";
 import {Services} from "../services/services";
 import {Router} from "@angular/router";
-
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-projects-list',
@@ -14,9 +12,9 @@ export class ProjectsListComponent implements OnInit {
 
   proList: Project[] = [];
 
-  projectName: string = '';
+  projectId?: number;
 
-  constructor(private services: Services, private router : Router, public dialog: MatDialog) { }
+  constructor(private services: Services, private router : Router) { }
 
   ngOnInit(): void {
     this.get_all_projects()
@@ -34,24 +32,22 @@ export class ProjectsListComponent implements OnInit {
     this.router.navigate(['/project-form'])
   }
 
-  deleteProject(project: Project) {
-    if(confirm("Estás seguro que quieres eliminar el proyecto?")) {
-      console.log("Deleting project: ", project)
+  archiveProject(project: Project) {
+    if(confirm("Estás seguro que quieres archivar el proyecto?")) {
+      console.log("Archiving project: ", project)
       if (project.id !== undefined){
-        this.services.delete_project(project.id).subscribe(() => console.log("project deleted"));
+        project.archived = true
+        this.services.putProject(project).subscribe(() => console.log("project archived"));
         window.location.reload()
       }
     }
-
-
   }
 
   editProject(project: Project) {
-
   }
 
   adminProject(project: Project) {
-    this.projectName = project.a
-    this.router.navigate(['/admin-form', project.a])
+    this.projectId = project.id
+    this.router.navigate(['/admin-form', project.id])
   }
 }

@@ -10,7 +10,7 @@ import {DocumentsListComponent} from "./documents-list/documents-list.component"
 const routes: Routes = [
   {path: '', component: HomePageComponent, pathMatch: 'full'},
   {path: 'project-form', component: ProjectFormComponent, pathMatch: 'full'},
-  {path: 'admin-form/:projectName', component: AdminFormComponent, pathMatch: 'full'},
+  {path: 'admin-form/:projectId', component: AdminFormComponent, pathMatch: 'full'},
   {path: 'person-form', component: PersonFormComponent, pathMatch: 'full'},
   {path: 'projects-list', component: ProjectsListComponent, pathMatch: 'full'},
   {path: 'people-list', component: PeopleListComponent, pathMatch: 'full'},

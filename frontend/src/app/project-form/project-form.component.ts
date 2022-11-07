@@ -11,9 +11,10 @@ import {Location} from '@angular/common';
 })
 export class ProjectFormComponent implements OnInit {
 
-  a: string = ''
-  b: string = ''
-  c: string = ''
+  cecoList: string[] = ['X202201', 'X202202', 'X202203', 'X202204', 'X202205']
+
+  name: string = ''
+  ceco: string = ''
   sessionProject!: Project
 
   constructor(private router : Router, private route :
@@ -24,16 +25,14 @@ export class ProjectFormComponent implements OnInit {
 
   onAccept() {
     const newProject: Project = {
-      a: this.a,
-      b: this.b,
-      c: this.c
+      name: this.name,
+      ceco: this.ceco
     };
 
-    this.a = '';
-    this.b = '';
-    this.c = '';
+    this.name = '';
+    this.ceco = '';
 
-    //this.services.add_project(newProject).subscribe((project) => this.sessionProject = project);
+    this.services.add_project(newProject).subscribe((project) => this.sessionProject = project);
     this._location.back();
 
   }
@@ -43,6 +42,7 @@ export class ProjectFormComponent implements OnInit {
   }
 }
 
+
 @Component({
   selector: 'app-admin-form',
   templateUrl: './admin-form.component.html',
@@ -50,13 +50,29 @@ export class ProjectFormComponent implements OnInit {
 })
 export class AdminFormComponent implements OnInit {
 
-  projectName: string | null = ''
+  project: Project = {
+    ceco: "",
+    name: ""
+  };
+  projectId?: number | null;
+  admin: string = '';
+  adminList: string[] = ['Jorge Lorenzo Salinas', 'Gabriel García Márquez', 'Pablo Neruda', 'Julio Cortazar', 'Mario Vargas Llosa']
 
   constructor(private router : Router, private route :
     ActivatedRoute, private services: Services, private _location: Location) { }
 
   ngOnInit(): void {
-    this.projectName = this.route.snapshot.paramMap.get('projectName')
+    this.projectId = (this.route.snapshot.paramMap.get('projectId') as number|null)
+    this.getProject(this.projectId)
+  }
+
+  getProject(projectId: number | null) {
+
+    if(projectId !== null){
+      this.services.getProjectById(projectId).subscribe(project => {
+        this.project = project['project']
+      })
+    }
   }
 
   onCancel() {
@@ -64,6 +80,8 @@ export class AdminFormComponent implements OnInit {
   }
 
   onAccept() {
-
+    this.project.admin = this.admin
+    this.services.putProject(this.project).subscribe(() => console.log("project archived"))
+    this._location.back();
   }
 }

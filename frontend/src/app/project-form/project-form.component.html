@@ -9,12 +9,10 @@
           <label class="input-label">CECO</label>
         </div>
         <div class="input">
-          <input style="margin-bottom: 5px" type="text" name="a" [(ngModel)]="a">
-          <select class="form-select form-select-sm" aria-label="Default select example">
-            <option selected>Escoge una opción</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <input style="margin-bottom: 5px" type="text" name="a" [(ngModel)]="name">
+          <select name="miselect" [(ngModel)]="ceco" class="form-select form-select-sm" aria-label="Default select example">
+            <option disabled>Escoge una opción</option>
+            <option value="{{item}}" *ngFor="let item of cecoList">{{item}}</option>
           </select>
         </div>
       </div>
@@ -22,7 +20,7 @@
         <button class="btn btn-sm btn-cancel" (click)="onCancel()">
         Cancelar
         </button>
-        <button [disabled]="a==''" class="btn btn-sm btn-save" (click)="onAccept()">
+        <button [disabled]="name=='' || ceco==''" class="btn btn-sm btn-save" (click)="onAccept()">
         Guardar
         </button>
       </div>

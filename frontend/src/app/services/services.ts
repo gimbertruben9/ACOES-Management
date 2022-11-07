@@ -59,4 +59,9 @@ export class Services {
     console.log('Put Person', person);
     return this.http.put<Person>(`${environment.baseApiUrl}/person/${person.id}`, person);
   }
+
+  getProjectById(id: number): Observable<any> {
+    console.log('Get project with id: ', id)
+    return this.http.get<any>(`${environment.baseApiUrl}/project/${id}`);
+  }
 }

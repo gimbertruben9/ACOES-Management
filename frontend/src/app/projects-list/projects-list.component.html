@@ -7,21 +7,27 @@
           <thead>
             <tr style="color: white">
               <th style="width: 120px" scope="col">Acción</th>
-              <th scope="col">A</th>
-              <th scope="col">B</th>
-              <th scope="col">C</th>
+              <th scope="col">Nombre Proyecto</th>
+              <th scope="col">Admin Proyecto</th>
+              <th scope="col">CECO</th>
+              <th scope="col">Nº Empleados</th>
+              <th scope="col">Nº Voluntarios</th>
+              <th scope="col">Situación Doc</th>
             </tr>
           </thead>
           <tbody style="color: white">
             <tr *ngFor="let project of proList">
               <th scope="row">
                 <button mat-icon-button class="btn-edit" (click)="editProject(project)"></button>
-                <button mat-icon-button class="btn-delete" (click)="deleteProject(project)"></button>
+                <button mat-icon-button class="btn-delete" (click)="archiveProject(project)"></button>
                 <button mat-icon-button class="btn-add-admin" (click)="adminProject(project)"></button>
               </th>
-              <td>{{project.a}}</td>
-              <td>{{project.b}}</td>
-              <td>{{project.c}}</td>
+              <td>{{project.name}}</td>
+              <td>{{project.admin}}</td>
+              <td>{{project.ceco}}</td>
+              <td>{{project.n_employees}}</td>
+              <td>{{project.n_volunteers}}</td>
+              <td>{{project.n_docs}}</td>
             </tr>
           </tbody>
         </table>

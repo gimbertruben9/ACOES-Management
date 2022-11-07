@@ -41,13 +41,12 @@ class Project(Resource):
         return {'project': project.json()}, 200 if project else 404
 
     def post(self, id=None):
-        parser.add_argument('a', type=str)
-        parser.add_argument('b', type=str)
-        parser.add_argument('c', type=str)
+        parser.add_argument('name', type=str)
+        parser.add_argument('ceco', type=str)
         data = parser.parse_args()
 
         with lock.lock:
-            project = ProjectsModel(a=data['a'], b=data['b'], c=data['c'])
+            project = ProjectsModel(name=data['name'], ceco=data['ceco'])
             project.save_to_db()
 
             return {'project': project.json()}, 200 if project else 404
@@ -57,20 +56,23 @@ class Project(Resource):
             ProjectsModel.get_by_id(id).delete_from_db()
 
     def put(self, id):
-        parser.add_argument('a', type=str)
-        parser.add_argument('b', type=str)
-        parser.add_argument('c', type=str)
+        parser.add_argument('name', type=str)
+        parser.add_argument('admin', type=str)
+        parser.add_argument('ceco', type=str)
+        parser.add_argument('archived', type=bool)
         data = parser.parse_args()
         with lock.lock:
             project = ProjectsModel.get_by_id(id)
 
             if project:
-                if data['a']:
-                    project.a = data['a']
-                if data['b']:
-                    project.b = data['b']
-                if data['c']:
-                    project.c = data['c']
+                if data['name']:
+                    project.name = data['name']
+                if data['admin']:
+                    project.admin = data['admin']
+                if data['ceco']:
+                    project.ceco = data['ceco']
+                if data['archived']:
+                    project.archived = data['archived']
 
             try:
                 project.save_to_db()
@@ -83,7 +85,8 @@ class Project(Resource):
 class ProjectsList(Resource):
 
     def get(self):
-        allProjects = ProjectsModel.get_all()
+        # allProjects = ProjectsModel.get_all()
+        allProjects = ProjectsModel.get_all_unarchived()
         projects = []
 
         for project in allProjects:
