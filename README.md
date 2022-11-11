@@ -17,9 +17,9 @@ For creating a new component (view) go to frontend/src/app and run:
     - python3 -m venv directory-name
 2. Install dependencies by running the following command in the same directory of requirements.txt: pip install -r requirements.txt
 3. To initialize database, inside backend's directory run:
-    - flask --app app db init
-    - flask --app app db migrate -m "Initial migration"
-    - flask --app app db upgrade
+    - flask --app app db init or flask db init
+    - flask --app app db migrate -m "Initial migration" or flask db migrate -m "Initial migration"
+    - flask --app app db upgrade or flask db upgrade
 4. For running the app.py: python3 app.py
 
 ## Executing all in one server
