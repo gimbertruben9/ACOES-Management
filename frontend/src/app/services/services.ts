@@ -30,7 +30,7 @@ export class Services {
 
   get_projects(): Observable<any> {
     console.log('Get Projects');
-    return this.http.get<any>(`${environment.baseApiUrl}/projects`);
+    return this.http.get<any>(`${environment.baseApiUrl}/unarchived-projects`);
   }
 
   get_people(): Observable<any>{

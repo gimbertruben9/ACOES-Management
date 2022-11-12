@@ -85,7 +85,18 @@ class Project(Resource):
 class ProjectsList(Resource):
 
     def get(self):
-        # allProjects = ProjectsModel.get_all()
+        allProjects = ProjectsModel.get_all()
+        projects = []
+
+        for project in allProjects:
+            projects.append(project.json())
+
+        return {'projects': projects}, 200 if projects else 404
+
+
+class UnarchivedProjectsList(Resource):
+
+    def get(self):
         allProjects = ProjectsModel.get_all_unarchived()
         projects = []
 
@@ -156,6 +167,7 @@ class PeopleList(Resource):
 
 api.add_resource(Project, '/project/<int:id>', '/project')
 api.add_resource(ProjectsList, '/projects')
+api.add_resource(UnarchivedProjectsList, '/unarchived-projects')
 api.add_resource(Person, '/person/<int:id>', '/person')
 api.add_resource(PeopleList, '/people')
 
