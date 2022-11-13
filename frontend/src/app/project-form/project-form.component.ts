@@ -11,8 +11,6 @@ import {Location} from '@angular/common';
 })
 export class ProjectFormComponent implements OnInit {
 
-  cecoList: string[] = ['X202201', 'X202202', 'X202203', 'X202204', 'X202205']
-
   name: string = ''
   ceco: string = ''
   sessionProject!: Project
