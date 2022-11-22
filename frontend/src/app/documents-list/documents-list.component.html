@@ -1,3 +1,48 @@
 <div class="page-content">
-
+  <div class="table-content">
+    <div style="padding: 25px">
+      <ng-container class="table-responsive">
+        <table class="table header_fijo">
+          <thead>
+            <tr style="color: white">
+              <th style="width: 120px" scope="col">Acción</th>
+              <th scope="col">Documento</th>
+              <th scope="col">Expedido</th>
+              <th scope="col">Caduca</th>
+              <th scope="col">Adjunto</th>
+              <th scope="col">Situación documental</th>
+            </tr>
+          </thead>
+          <tbody style="color: white">
+            <tr *ngFor="let person of people">
+              <th scope="row">
+                <button mat-icon-button class="btn-open" (click)="expandCell(person)"></button>
+              </th>
+              <td>
+                {{person.d}}
+                <table *ngIf="person.expand" class="table tabla-anidada">
+                  <tbody style="color: white">
+                    <tr *ngFor="let doc of peopleDocs">
+                      <th style="width: 140px" scope="row">
+                        <button mat-icon-button class="btn-edit"></button>
+                        <button mat-icon-button class="btn-delete"></button>
+                        <button mat-icon-button class="btn-tick"></button>
+                        <button mat-icon-button class="btn-i"></button>
+                      </th>
+                      <td>{{doc.documento}}</td>
+                      <td>{{doc.expedido}}</td>
+                      <td>{{doc.caduca}}</td>
+                      <td><button mat-icon-button class="btn-adj"></button></td>
+                      <td><mat-icon style="background-color: #46a35e; border-radius: 20px"></mat-icon></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <label style="color: white">Showing {{people.length}}</label>
+    </div>
+  </div>
 </div>

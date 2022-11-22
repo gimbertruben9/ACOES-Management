@@ -3,4 +3,5 @@ export interface Person {
   d: string;
   e: string;
   f: string;
+  expand?: boolean;
 }

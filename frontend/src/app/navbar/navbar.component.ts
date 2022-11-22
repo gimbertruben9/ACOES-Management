@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
         this.documents_btn = false
         break
 
-      case '#/documents-list':
+      case '#/documents-form':
         this.projects_btn = false
         this.people_btn = false
         this.documents_btn = true

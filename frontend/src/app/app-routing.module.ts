@@ -6,6 +6,7 @@ import {HomePageComponent} from "./home-page/home-page.component";
 import {ProjectsListComponent} from "./projects-list/projects-list.component";
 import {PeopleListComponent} from "./people-list/people-list.component";
 import {DocumentsListComponent} from "./documents-list/documents-list.component";
+import {DocumentsFormComponent} from "./documents-form/documents-form.component";
 
 const routes: Routes = [
   {path: '', component: HomePageComponent, pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'projects-list', component: ProjectsListComponent, pathMatch: 'full'},
   {path: 'people-list', component: PeopleListComponent, pathMatch: 'full'},
   {path: 'documents-list', component: DocumentsListComponent, pathMatch: 'full'},
+  {path: 'documents-form', component: DocumentsFormComponent, pathMatch: 'full'},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

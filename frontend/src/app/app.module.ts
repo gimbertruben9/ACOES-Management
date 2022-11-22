@@ -24,6 +24,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { DocumentsListComponent } from './documents-list/documents-list.component';
+import { DocumentsFormComponent } from './documents-form/documents-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DocumentsListComponent } from './documents-list/documents-list.componen
     NavbarComponent,
     EditPersonDialog,
     DocumentsListComponent,
-    AdminFormComponent
+    AdminFormComponent,
+    DocumentsFormComponent
   ],
   imports: [
     BrowserModule,
