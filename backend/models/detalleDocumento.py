@@ -25,7 +25,7 @@ class DetalleDocumentoModel(db.Model):
 
     # relacion 1-N
     persona = db.relationship("PersonaModel", foreign_keys=[idEmpleado])
-    setupDocumentoPersona = db.relationship("SetupDocumentoPersona", foreign_keys=[idSetupDocumentoPersona])
+    setupDocumentoPersona = db.relationship("SetupDocumentoPersonaModel", foreign_keys=[idSetupDocumentoPersona])
 
     def json(self):
         return {'idSetupDocumentoPersona': self.idSetupDocumentoPersona, 'idEmpleado': self.idEmpleado,
