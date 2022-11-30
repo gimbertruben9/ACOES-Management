@@ -190,13 +190,13 @@ setupDocumentoPersona = [
         'idDocumento': 1,
         'idTipoDocumento': 2,
         'idTipoVinculacion': 1,
-        'diasExpira': float('inf')
+        'diasExpira': -1
     },
     {
         'idDocumento': 2,
         'idTipoDocumento': 2,
         'idTipoVinculacion': 1,
-        'diasExpira': float('inf')
+        'diasExpira': -1
     },
     {
         'idDocumento': 3,
@@ -208,7 +208,7 @@ setupDocumentoPersona = [
         'idDocumento': 4,
         'idTipoDocumento': 2,
         'idTipoVinculacion': 1,
-        'diasExpira': float('inf')
+        'diasExpira': -1
     },
     {
         'idDocumento': 5,
@@ -232,7 +232,7 @@ setupDocumentoPersona = [
         'idDocumento': 8,
         'idTipoDocumento': 2,
         'idTipoVinculacion': 1,
-        'diasExpira': None
+        'diasExpira': -1
     },
     {
         'idDocumento': 9,
@@ -274,13 +274,13 @@ setupDocumentoPersona = [
         'idDocumento': 15,
         'idTipoDocumento': 1,
         'idTipoVinculacion': 1,
-        'diasExpira': None
+        'diasExpira': -1
     },
     {
         'idDocumento': 1,
         'idTipoDocumento': 2,
         'idTipoVinculacion': 2,
-        'diasExpira': 1825
+        'diasExpira': -1
     },
     {
         'idDocumento': 16,
