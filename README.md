@@ -31,4 +31,4 @@ For creating a new component (view) go to frontend/src/app and run:
 
 1. cd backend
 2. Initialise database -> flask db init; flask db migrate -m "Initial migration"; flask db upgrade;
-3. 
+3. python3 add_data.py
