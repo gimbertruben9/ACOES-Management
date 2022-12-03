@@ -5,14 +5,16 @@ class ProyectoModel(db.Model):
     __tablename__ = 'proyecto'  # this is the table name
     __table_args__ = (db.UniqueConstraint('idOrganizacion', 'nombre'),)
 
-    def __init__(self, nombre):
+    def __init__(self, nombre, centroCoste):
         self.nombre = nombre
+        self.centroCoste = centroCoste
         self.archived = False
 
     id = db.Column(db.Integer, primary_key=True)
     idOrganizacion = db.Column(db.Integer, db.ForeignKey("organizacion.id"), nullable=False)
     nombre = db.Column(db.String(45), nullable=False, unique=True)
     idCoordinador = db.Column(db.Integer, db.ForeignKey("persona.id"), nullable=True)
+    centroCoste = db.Column(db.String(60), nullable=False)
     archived = db.Column(db.Boolean, nullable=False)
 
     # relacion N-1
@@ -20,7 +22,7 @@ class ProyectoModel(db.Model):
 
     def json(self):
         return {'id': self.id, 'idOrganizacion': self.idOrganizacion, 'nombre': self.nombre, 'idCoordinador': self.idCoordinador,
-                'archived': self.archived}
+                'centroCoste': self.centroCoste, 'archived': self.archived}
 
     def save_to_db(self):
         db.session.add(self)

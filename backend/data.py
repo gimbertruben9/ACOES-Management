@@ -40,8 +40,12 @@ rol = [
         'tipoRol': 'super-admin'
     },
     {
-        'nombreRol': 'Administrador Coordinador',
+        'nombreRol': 'Administrador',
         'tipoRol': 'admin'
+    },
+{
+        'nombreRol': 'Coordinador',
+        'tipoRol': 'coord'
     },
     {
         'nombreRol': 'Sin Rol',

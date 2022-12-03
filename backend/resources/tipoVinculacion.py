@@ -30,8 +30,8 @@ class TipoVinculacion(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('idTipo', type=str, required=True)
-        parser.add_argument('descTipoVinculacion', type=str, required=True)
+        parser.add_argument('idTipo', type=str, required=False)
+        parser.add_argument('descTipoVinculacion', type=str, required=False)
         data = parser.parse_args()
 
         with lock.lock:

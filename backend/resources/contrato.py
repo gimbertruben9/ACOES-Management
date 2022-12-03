@@ -30,7 +30,7 @@ class Contrato(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('tipoContrato', type=str, required=True)
+        parser.add_argument('tipoContrato', type=str, required=False)
         data = parser.parse_args()
 
         with lock.lock:

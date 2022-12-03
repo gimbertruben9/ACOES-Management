@@ -24,6 +24,7 @@ export class PersonFormComponent implements OnInit {
   }
 
   onAccept() {
+    /*
     const newPerson: Person = {
       d: this.d,
       e: this.e,
@@ -36,6 +37,8 @@ export class PersonFormComponent implements OnInit {
 
     this.services.add_person(newPerson).subscribe((person) => this.sessionPerson = person);
     this._location.back();
+
+     */
 
   }
 }

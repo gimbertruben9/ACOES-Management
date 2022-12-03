@@ -85,3 +85,8 @@ class PersonaModel(db.Model):
     @classmethod
     def get_all(self):
         return db.session.query(PersonaModel).all()
+
+    @classmethod
+    def get_number_by_project(self, idProyecto, idTipoVinculacion):
+        return PersonaModel.query.filter_by(idProyecto=idProyecto, idTipoVinculacion=idTipoVinculacion).count()
+

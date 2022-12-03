@@ -2,7 +2,7 @@
 <div class="page-content">
   <div>
     <form class="form-content">
-      <label class="label-form">Alta Proyecto</label>
+      <label class="label-form">Editar Proyecto</label>
       <div class="inputs">
         <div class="input">
           <label style="margin-bottom: 10px" class="input-label">Organización</label>
@@ -11,19 +11,19 @@
         </div>
         <div class="input">
           <select style="margin-bottom: 5px" aria-label="select org" class="form-select form-select-sm"
-                  [(ngModel)]="idOrganizacion" name="idOrganizacion" (change)="changeSelect($event)">
+                  [(ngModel)]="project.idOrganizacion" name="idOrganizacion" (change)="changeSelect($event)">
             <option selected value="0">Selecciona</option>
             <option *ngFor="let org of orgList" [value]="org.id">{{org.nombre}}</option>
           </select>
-          <input style="margin-bottom: 5px" type="text" name="name" [(ngModel)]="nombre">
-          <input style="margin-bottom: 5px" type="text" name="ceco" [(ngModel)]="centroCoste">
+          <input style="margin-bottom: 5px" type="text" name="name" [(ngModel)]="project.nombre">
+          <input style="margin-bottom: 5px" type="text" name="ceco" [(ngModel)]="project.centroCoste">
         </div>
       </div>
       <div class="form-buttons">
         <button class="btn btn-sm btn-cancel" (click)="onCancel()">
         Cancelar
         </button>
-        <button [disabled]="idOrganizacion==0 || nombre=='' || centroCoste==''" class="btn btn-sm btn-save" (click)="onAccept()">
+        <button [disabled]="project.idOrganizacion==0 || project.nombre=='' || project.centroCoste==''" class="btn btn-sm btn-save" (click)="onAccept()">
         Guardar
         </button>
       </div>

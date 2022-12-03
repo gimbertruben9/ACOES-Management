@@ -18,7 +18,7 @@ class Persona(Resource):
         parser = reqparse.RequestParser()
 
         parser.add_argument('primerNombre', type=str, required=True)
-        parser.add_argument('segundoNombre', type=str, required=True)
+        parser.add_argument('segundoNombre', type=str, required=False)
         parser.add_argument('primerApellido', type=str, required=True)
         parser.add_argument('segundoApellido', type=str, required=True)
         parser.add_argument('telefono', type=str, required=True)
@@ -65,26 +65,26 @@ class Persona(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('primerNombre', type=str, required=True)
-        parser.add_argument('segundoNombre', type=str, required=True)
-        parser.add_argument('primerApellido', type=str, required=True)
-        parser.add_argument('segundoApellido', type=str, required=True)
-        parser.add_argument('telefono', type=str, required=True)
-        parser.add_argument('correo', type=str, required=True)
-        parser.add_argument('codigoEmpleado', type=str, required=True)
-        parser.add_argument('fechaNacimiento', type=str, required=True)
-        parser.add_argument('puesto', type=str, required=True)
-        parser.add_argument('fechaInicio', type=str, required=True)
-        parser.add_argument('fechaFinal', type=str, required=True)
-        parser.add_argument('genero', type=str, required=True)
-        parser.add_argument('numPasaporte', type=str, required=True)
-        parser.add_argument('salario', type=float, required=True)
-        parser.add_argument('centroCoste', type=str, required=True)
+        parser.add_argument('primerNombre', type=str, required=False)
+        parser.add_argument('segundoNombre', type=str, required=False)
+        parser.add_argument('primerApellido', type=str, required=False)
+        parser.add_argument('segundoApellido', type=str, required=False)
+        parser.add_argument('telefono', type=str, required=False)
+        parser.add_argument('correo', type=str, required=False)
+        parser.add_argument('codigoEmpleado', type=str, required=False)
+        parser.add_argument('fechaNacimiento', type=str, required=False)
+        parser.add_argument('puesto', type=str, required=False)
+        parser.add_argument('fechaInicio', type=str, required=False)
+        parser.add_argument('fechaFinal', type=str, required=False)
+        parser.add_argument('genero', type=str, required=False)
+        parser.add_argument('numPasaporte', type=str, required=False)
+        parser.add_argument('salario', type=float, required=False)
+        parser.add_argument('centroCoste', type=str, required=False)
 
-        parser.add_argument('idTipoVinculacion', type=int, required=True)
-        parser.add_argument('idDireccion', type=int, required=True)
+        parser.add_argument('idTipoVinculacion', type=int, required=False)
+        parser.add_argument('idDireccion', type=int, required=False)
         parser.add_argument('idContrato', type=int, required=False)
-        parser.add_argument('idProyecto', type=int, required=True)
+        parser.add_argument('idProyecto', type=int, required=False)
         data = parser.parse_args()
 
         with lock.lock:
@@ -148,3 +148,12 @@ class PersonaList(Resource):
             people.append(person.json())
 
         return {'personas': people}, 200 if people else 404
+
+
+class PersonasPorProyecto(Resource):
+
+    def get(self, idProyecto, idTipoVinculacion):
+
+        n_people = PersonaModel.get_number_by_project(idProyecto, idTipoVinculacion)
+
+        return {'n_personas': n_people}, 200 if n_people else 404

@@ -1,5 +1,6 @@
 <div class="page-content">
   <div class="table-content">
+    <!--
     <div style="padding: 25px">
       <ng-container class="table-responsive">
         <table class="table header_fijo">
@@ -19,7 +20,7 @@
                 <button mat-icon-button class="btn-open" (click)="expandCell(person)"></button>
               </th>
               <td>
-                {{person.d}}
+                {{person.primerNombre}}
                 <table *ngIf="person.expand" class="table tabla-anidada">
                   <tbody style="color: white">
                     <tr *ngFor="let doc of peopleDocs">
@@ -44,5 +45,6 @@
       </ng-container>
       <label style="color: white">Showing {{people.length}}</label>
     </div>
+    -->
   </div>
 </div>

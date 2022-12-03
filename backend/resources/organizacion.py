@@ -30,8 +30,8 @@ class Organizacion(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('nombre', type=str, required=True)
-        parser.add_argument('rtn', type=str, required=True)
+        parser.add_argument('nombre', type=str, required=False)
+        parser.add_argument('rtn', type=str, required=False)
         data = parser.parse_args()
 
         with lock.lock:
@@ -49,3 +49,15 @@ class Organizacion(Resource):
                 return {"message": "An error occurred inserting the organization."}, 500
 
             return {'organizacion': org.json()}, 200 if org else 404
+
+
+class OrganizacionList(Resource):
+
+    def get(self):
+        allOrgs = OrganizacionModel.get_all()
+        orgs = []
+
+        for org in allOrgs:
+            orgs.append(org.json())
+
+        return {'organizaciones': orgs}, 200 if orgs else 404

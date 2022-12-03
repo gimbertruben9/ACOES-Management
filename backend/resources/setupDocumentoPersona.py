@@ -43,11 +43,11 @@ class SetupDocumentoPersona(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('diasExpira', type=int, required=True)
+        parser.add_argument('diasExpira', type=int, required=False)
 
-        parser.add_argument('idDocumento', type=int, required=True)
-        parser.add_argument('idTipoDocumento', type=int, required=True)
-        parser.add_argument('idTipoVinculacion', type=int, required=True)
+        parser.add_argument('idDocumento', type=int, required=False)
+        parser.add_argument('idTipoDocumento', type=int, required=False)
+        parser.add_argument('idTipoVinculacion', type=int, required=False)
 
         data = parser.parse_args()
 

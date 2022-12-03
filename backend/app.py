@@ -5,8 +5,8 @@ from resources.contrato import Contrato
 from resources.detalleDocumento import DetalleDocumento
 from resources.direccion import Direccion
 from resources.documento import Documento
-from resources.organizacion import Organizacion
-from resources.persona import Persona, PersonaList
+from resources.organizacion import Organizacion, OrganizacionList
+from resources.persona import Persona, PersonaList, PersonasPorProyecto
 from resources.proyecto import Proyecto, ProyectoList, ProyectoDesarchivadoList
 from resources.rol import Rol
 from resources.setupDocumentoPersona import SetupDocumentoPersona
@@ -51,12 +51,14 @@ api.add_resource(ProyectoDesarchivadoList, '/proyectos-desarchivados')
 
 api.add_resource(Persona, '/persona/<int:id>', '/persona')
 api.add_resource(PersonaList, '/personas')
+api.add_resource(PersonasPorProyecto, '/personasPorProyecto/<int:idProyecto>/<int:idTipoVinculacion>')
 
 api.add_resource(Contrato, '/contrato/<int:id>', '/contrato')
 
 api.add_resource(Direccion, '/direccion/<int:id>', '/direccion')
 
 api.add_resource(Organizacion, '/organizacion/<int:id>', '/organizacion')
+api.add_resource(OrganizacionList, '/organizaciones')
 
 api.add_resource(TipoVinculacion, '/tipoVinculacion/<int:id>', '/tipoVinculacion')
 

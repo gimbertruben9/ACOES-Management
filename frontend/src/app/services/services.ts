@@ -20,48 +20,63 @@ export class Services {
 
   add_project(project: Project): Observable<Project> {
     console.log('Post Project', project);
-    return this.http.post<Project>(`${environment.baseApiUrl}/project`, project);
+    return this.http.post<Project>(`${environment.baseApiUrl}/proyecto`, project);
   }
 
   add_person(person: Person): Observable<Person> {
     console.log('Post Person', person)
-    return this.http.post<Person>(`${environment.baseApiUrl}/person`, person);
+    return this.http.post<Person>(`${environment.baseApiUrl}/persona`, person);
   }
 
   get_projects(): Observable<any> {
     console.log('Get Projects');
-    return this.http.get<any>(`${environment.baseApiUrl}/unarchived-projects`);
+    return this.http.get<any>(`${environment.baseApiUrl}/proyectos-desarchivados`);
   }
 
   get_people(): Observable<any>{
     console.log('Get People')
-    return this.http.get<any>(`${environment.baseApiUrl}/people`)
+    return this.http.get<any>(`${environment.baseApiUrl}/personas`)
   }
 
   delete_project(id: number): Observable<Object> {
     console.log("Delete project: ", id)
-    console.log("URL: ", `${environment.baseApiUrl}/project/${id}`)
-    return this.http.delete(`${environment.baseApiUrl}/project/${id}`)
+    console.log("URL: ", `${environment.baseApiUrl}/proyecto/${id}`)
+    return this.http.delete(`${environment.baseApiUrl}/proyecto/${id}`)
   }
 
   delete_person(id: number): Observable<Object> {
     console.log("Delete person: ", id)
-    console.log("URL: ", `${environment.baseApiUrl}/person/${id}`)
-    return this.http.delete(`${environment.baseApiUrl}/person/${id}`)
+    console.log("URL: ", `${environment.baseApiUrl}/persona/${id}`)
+    return this.http.delete(`${environment.baseApiUrl}/persona/${id}`)
   }
 
   putProject(project: Project): Observable<Project> {
     console.log('Put Project', project);
-    return this.http.put<Project>(`${environment.baseApiUrl}/project/${project.id}`, project);
+    return this.http.put<Project>(`${environment.baseApiUrl}/proyecto/${project.id}`, project);
   }
 
   putPerson(person: Person): Observable<Person> {
     console.log('Put Person', person);
-    return this.http.put<Person>(`${environment.baseApiUrl}/person/${person.id}`, person);
+    return this.http.put<Person>(`${environment.baseApiUrl}/persona/${person.id}`, person);
   }
 
   getProjectById(id: number): Observable<any> {
     console.log('Get project with id: ', id)
-    return this.http.get<any>(`${environment.baseApiUrl}/project/${id}`);
+    return this.http.get<any>(`${environment.baseApiUrl}/proyecto/${id}`);
+  }
+
+  get_orgs(): Observable<any> {
+    console.log('Get Organizations')
+    return this.http.get<any>(`${environment.baseApiUrl}/organizaciones`)
+  }
+
+  get_number_by_project(idProyecto?: number, idTipoVinculacion?: number): Observable<any> {
+    console.log('Get number of people in project:', idProyecto)
+    return this.http.get<any>(`${environment.baseApiUrl}/personasPorProyecto/${idProyecto}/${idTipoVinculacion}`)
+  }
+
+  get_project_admin(idCoordinador: number|undefined): Observable<any> {
+    console.log('Get admin')
+    return this.http.get<any>(`${environment.baseApiUrl}/persona/${idCoordinador}`)
   }
 }

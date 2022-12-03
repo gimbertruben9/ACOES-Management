@@ -30,8 +30,8 @@ class Rol(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('nombreRol', type=str, required=True)
-        parser.add_argument('tipoRol', type=str, required=True)
+        parser.add_argument('nombreRol', type=str, required=False)
+        parser.add_argument('tipoRol', type=str, required=False)
         data = parser.parse_args()
 
         with lock.lock:

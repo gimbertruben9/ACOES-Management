@@ -34,11 +34,11 @@ class Direccion(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('pais', type=str, required=True)
-        parser.add_argument('ciudad', type=str, required=True)
-        parser.add_argument('colonia', type=str, required=True)
-        parser.add_argument('calle', type=str, required=True)
-        parser.add_argument('descripcion', type=str, required=True)
+        parser.add_argument('pais', type=str, required=False)
+        parser.add_argument('ciudad', type=str, required=False)
+        parser.add_argument('colonia', type=str, required=False)
+        parser.add_argument('calle', type=str, required=False)
+        parser.add_argument('descripcion', type=str, required=False)
         data = parser.parse_args()
 
         with lock.lock:

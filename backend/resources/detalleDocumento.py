@@ -63,14 +63,14 @@ class DetalleDocumento(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('fechaHoraCarga', type=str, required=True)
-        parser.add_argument('fechaExpedicion', type=str, required=True)
-        parser.add_argument('comentario', type=str, required=True)
-        parser.add_argument('pathDestinoAdjunto', type=str, required=True)
-        parser.add_argument('nombreAdjuntoOriginal', type=str, required=True)
+        parser.add_argument('fechaHoraCarga', type=str, required=False)
+        parser.add_argument('fechaExpedicion', type=str, required=False)
+        parser.add_argument('comentario', type=str, required=False)
+        parser.add_argument('pathDestinoAdjunto', type=str, required=False)
+        parser.add_argument('nombreAdjuntoOriginal', type=str, required=False)
 
-        parser.add_argument('idSetupDocumentoPersona', type=int, required=True)
-        parser.add_argument('idEmpleado', type=int, required=True)
+        parser.add_argument('idSetupDocumentoPersona', type=int, required=False)
+        parser.add_argument('idEmpleado', type=int, required=False)
         data = parser.parse_args()
 
         with lock.lock:

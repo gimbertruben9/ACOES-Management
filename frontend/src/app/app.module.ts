@@ -6,7 +6,7 @@ import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjectFormComponent, AdminFormComponent } from './project-form/project-form.component';
+import { ProjectFormComponent, AdminFormComponent, EditProjectFormComponent } from './project-form/project-form.component';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
@@ -38,7 +38,8 @@ import { DocumentsFormComponent } from './documents-form/documents-form.componen
     EditPersonDialog,
     DocumentsListComponent,
     AdminFormComponent,
-    DocumentsFormComponent
+    DocumentsFormComponent,
+    EditProjectFormComponent
   ],
   imports: [
     BrowserModule,

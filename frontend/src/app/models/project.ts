@@ -1,10 +1,12 @@
 export interface Project {
   id?: number;
-  name: string;
-  admin?: string;
-  ceco: string;
-  n_employees?: number;
-  n_volunteers?: number;
-  n_docs?: number;
+  idOrganizacion: number;
+  nombre: string;
+  idCoordinador?: number;
+  centroCoste: string;
   archived?: boolean;
+  n_empleados?: number;
+  n_voluntarios?: number;
+  n_docs?: number;
+  nombreCoordinador?: string;
 }

@@ -15,13 +15,14 @@ class Proyecto(Resource):
         parser = reqparse.RequestParser()
 
         parser.add_argument('nombre', type=str, required=True)
+        parser.add_argument('centroCoste', type=str, required=True)
 
         parser.add_argument('idOrganizacion', type=int, required=True)
         parser.add_argument('idCoordinador', type=int, required=False)
         data = parser.parse_args()
 
         with lock.lock:
-            project = ProyectoModel(nombre=data['nombre'])
+            project = ProyectoModel(nombre=data['nombre'], centroCoste=data['centroCoste'])
             project.add_org(OrganizacionModel.get_by_id(data['idOrganizacion']))
 
             if data['idCoordinador']:
@@ -38,10 +39,12 @@ class Proyecto(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('nombre', type=str, required=True)
+        parser.add_argument('nombre', type=str, required=False)
+        parser.add_argument('centroCoste', type=str, required=False)
 
-        parser.add_argument('idOrganizacion', type=int, required=True)
+        parser.add_argument('idOrganizacion', type=int, required=False)
         parser.add_argument('idCoordinador', type=int, required=False)
+        parser.add_argument('archived', type=bool, required=False)
         data = parser.parse_args()
 
         with lock.lock:
@@ -50,10 +53,14 @@ class Proyecto(Resource):
             if project:
                 if data['nombre']:
                     project.nombre = data['nombre']
+                if data['centroCoste']:
+                    project.centroCoste = data['centroCoste']
                 if data['idCoordinador']:
                     project.idCoordinador = data['idCoordinador']
                 if data['idOrganizacion']:
                     project.add_org(OrganizacionModel.get_by_id(data['idOrganizacion']))
+                if data['archived']:
+                    project.archived = data['archived']
 
             try:
                 project.save_to_db()

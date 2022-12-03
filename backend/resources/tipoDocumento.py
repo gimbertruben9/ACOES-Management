@@ -30,7 +30,7 @@ class TipoDocumento(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('descTipoDocumento', type=str, required=True)
+        parser.add_argument('descTipoDocumento', type=str, required=False)
         data = parser.parse_args()
 
         with lock.lock:

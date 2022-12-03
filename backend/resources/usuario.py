@@ -38,13 +38,13 @@ class Usuario(Resource):
     def put(self, id):
         parser = reqparse.RequestParser()
 
-        parser.add_argument('nombreUsuario', type=str, required=True)
-        parser.add_argument('correo', type=str, required=True)
-        parser.add_argument('password', type=str, required=True)
-        parser.add_argument('estado', type=str, required=True)
-        parser.add_argument('idRolUsuario', type=int, required=True)
+        parser.add_argument('nombreUsuario', type=str, required=False)
+        parser.add_argument('correo', type=str, required=False)
+        parser.add_argument('password', type=str, required=False)
+        parser.add_argument('estado', type=str, required=False)
+        parser.add_argument('idRolUsuario', type=int, required=False)
 
-        parser.add_argument('idPersona', type=int, required=True)
+        parser.add_argument('idPersona', type=int, required=False)
         data = parser.parse_args()
 
         with lock.lock:

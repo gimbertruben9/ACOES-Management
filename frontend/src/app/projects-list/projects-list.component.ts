@@ -23,9 +23,36 @@ export class ProjectsListComponent implements OnInit {
   private get_all_projects() {
     this.proList = []
     this.services.get_projects().subscribe(projects => {
-      this.proList = projects['projects']
+      this.proList = projects['proyectos']
       console.log("All projects", this.proList)
+      this.get_people_by_project()
     });
+  }
+
+  private get_people_by_project() {
+    for(let i=0; i<this.proList.length; i++){
+      this.services.get_number_by_project(this.proList[i].id, 1).subscribe(n_empleados => {
+        this.proList[i].n_empleados = n_empleados['n_personas']
+      },
+        error => {
+        this.proList[i].n_empleados = 0
+        })
+
+      this.services.get_number_by_project(this.proList[i].id, 2).subscribe(n_voluntarios => {
+        this.proList[i].n_voluntarios = n_voluntarios['n_personas']
+      },
+        error => {
+        this.proList[i].n_voluntarios = 0
+        })
+
+      if(this.proList[i].idCoordinador!=undefined){
+        this.services.get_project_admin(this.proList[i].idCoordinador).subscribe(admin => {
+          this.proList[i].nombreCoordinador = admin['persona'].primerNombre + ' ' + admin['persona'].segundoNombre + ' '  +
+            admin['persona'].primerApellido + ' '  + admin['persona'].segundoApellido
+        })
+      }
+    }
+
   }
 
   addProject() {
@@ -37,13 +64,17 @@ export class ProjectsListComponent implements OnInit {
       console.log("Archiving project: ", project)
       if (project.id !== undefined){
         project.archived = true
-        this.services.putProject(project).subscribe(() => console.log("project archived"));
-        window.location.reload()
+        this.services.putProject(project).subscribe(() => {
+          console.log("project archived")
+          window.location.reload()
+        });
       }
     }
   }
 
   editProject(project: Project) {
+    this.projectId = project.id
+    this.router.navigate(['/edit-project-form', project.id])
   }
 
   adminProject(project: Project) {
