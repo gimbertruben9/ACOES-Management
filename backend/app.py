@@ -2,14 +2,14 @@ from flask import Flask
 from flask_restful import Api
 
 from resources.contrato import Contrato
-from resources.detalleDocumento import DetalleDocumento
+from resources.detalleDocumento import DetalleDocumento, DetalleDocumentoList
 from resources.direccion import Direccion
 from resources.documento import Documento
 from resources.organizacion import Organizacion, OrganizacionList
 from resources.persona import Persona, PersonaList, PersonasPorProyecto
 from resources.proyecto import Proyecto, ProyectoList, ProyectoDesarchivadoList
 from resources.rol import Rol
-from resources.setupDocumentoPersona import SetupDocumentoPersona
+from resources.setupDocumentoPersona import SetupDocumentoPersona, SetupDocumentoPersonaList
 from resources.tipoDocumento import TipoDocumento
 from resources.tipoVinculacion import TipoVinculacion
 from resources.usuario import Usuario
@@ -62,9 +62,11 @@ api.add_resource(OrganizacionList, '/organizaciones')
 
 api.add_resource(TipoVinculacion, '/tipoVinculacion/<int:id>', '/tipoVinculacion')
 
-api.add_resource(DetalleDocumento, '/detalleDocumento')
+api.add_resource(DetalleDocumento, '/detalleDocumento/<int:id>', '/detalleDocumento')
+api.add_resource(DetalleDocumentoList, '/detallesDocumento/<int:idEmpleado>', '/detallesDocumento')
 
 api.add_resource(SetupDocumentoPersona, '/setupDocumentoPersona/<int:id>', '/setupDocumentoPersona')
+api.add_resource(SetupDocumentoPersonaList, '/setupsDocumentoPersona/<int:idTipoVinculacion>', '/setupsDocumentoPersona')
 
 api.add_resource(Documento, '/documento/<int:id>', '/documento')
 

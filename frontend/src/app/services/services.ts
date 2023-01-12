@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import {Project} from "../models/project";
 import {Person} from "../models/person";
 import {environment} from "../../environments/environment";
+import {DetalleDocumento} from "../models/detalleDocumento";
 
 @Injectable({
   providedIn: 'root'
@@ -78,5 +79,35 @@ export class Services {
   get_project_admin(idCoordinador: number|undefined): Observable<any> {
     console.log('Get admin')
     return this.http.get<any>(`${environment.baseApiUrl}/persona/${idCoordinador}`)
+  }
+
+  get_all_detalleDoc(idEmpleado: number): Observable<any> {
+    console.log('Get all detallesDocumento')
+    return this.http.get<any>(`${environment.baseApiUrl}/detallesDocumento/${idEmpleado}`)
+  }
+
+  get_detalleDoc(idDetalle: number): Observable<any>{
+    return this.http.get<any>(`${environment.baseApiUrl}/detalleDocumento/${idDetalle}`)
+  }
+
+  get_person(idPersona: number): Observable<any> {
+    return this.http.get<any>(`${environment.baseApiUrl}/persona/${idPersona}`)
+  }
+
+  postDocument(detalle: DetalleDocumento): Observable<DetalleDocumento> {
+    if(detalle.id != undefined){
+      return this.http.post<DetalleDocumento>(`${environment.baseApiUrl}/detalleDocumento/${detalle.id}`, detalle)
+    }
+    else{
+      return this.http.post<DetalleDocumento>(`${environment.baseApiUrl}/detalleDocumento`, detalle)
+    }
+  }
+
+  putDocument(detalle: DetalleDocumento): Observable<DetalleDocumento> {
+    return this.http.put<DetalleDocumento>(`${environment.baseApiUrl}/detalleDocumento/${detalle.id}`, detalle)
+  }
+
+  deleteDocument(detalle: DetalleDocumento): Observable<any> {
+    return this.http.delete(`${environment.baseApiUrl}/detalleDocumento/${detalle.id}`)
   }
 }

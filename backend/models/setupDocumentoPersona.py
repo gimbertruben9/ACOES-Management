@@ -49,3 +49,7 @@ class SetupDocumentoPersonaModel(db.Model):
     @classmethod
     def get_all(self):
         return db.session.query(SetupDocumentoPersonaModel).all()
+
+    @classmethod
+    def get_all_by_vinc(self, idTipoVinculacion):
+        return SetupDocumentoPersonaModel.query.filter_by(idTipoVinculacion=idTipoVinculacion)

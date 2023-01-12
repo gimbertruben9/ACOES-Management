@@ -1,40 +1,49 @@
 <div class="page-content">
   <div class="table-content">
-    <!--
     <div style="padding: 25px">
       <ng-container class="table-responsive">
         <table class="table header_fijo">
           <thead>
             <tr style="color: white">
-              <th style="width: 120px" scope="col">Acción</th>
+              <th style="width: 195px; padding-left: 85px;" scope="col">Acción</th>
               <th scope="col">Documento</th>
               <th scope="col">Expedido</th>
               <th scope="col">Caduca</th>
               <th scope="col">Adjunto</th>
-              <th scope="col">Situación documental</th>
+              <th style="padding-right: 85px" scope="col">Situación documental</th>
             </tr>
           </thead>
           <tbody style="color: white">
-            <tr *ngFor="let person of people">
-              <th scope="row">
+            <tr *ngFor="let person of docsPorPersona">
+              <th style="width: 40px" scope="row">
                 <button mat-icon-button class="btn-open" (click)="expandCell(person)"></button>
               </th>
-              <td>
-                {{person.primerNombre}}
-                <table *ngIf="person.expand" class="table tabla-anidada">
+              <td style="width: 1110px">
+                <div class="doc-name">
+                  <p style="text-align: start; width: 250px;">
+                    {{person.persona.primerNombre + " " + person.persona.segundoNombre + " " + person.persona.primerApellido + " " + person.persona.segundoApellido}}
+                  </p>
+                  <div style="width: 70%; text-align: right; padding-right: 40px"><mat-icon [ngClass]="{'rojo': person.persona.situacionDocumental==1, 'verde': person.persona.situacionDocumental==2, 'ambar': person.persona.situacionDocumental==3}"></mat-icon></div>
+                  <p style="text-align: right">ID: {{person.persona.id}}</p>
+                </div>
+                <table *ngIf="person.persona.expand" class="table tabla-anidada">
                   <tbody style="color: white">
-                    <tr *ngFor="let doc of peopleDocs">
+                    <tr *ngFor="let doc of person.docs">
                       <th style="width: 140px" scope="row">
-                        <button mat-icon-button class="btn-edit"></button>
-                        <button mat-icon-button class="btn-delete"></button>
-                        <button mat-icon-button class="btn-tick"></button>
-                        <button mat-icon-button class="btn-i"></button>
+                        <button mat-icon-button class="btn-edit" (click)="edit_doc(doc)"></button>
+                        <button mat-icon-button [ngClass]="{'btn-delete-disabled': doc.fechaExpedicion==undefined, 'btn-delete-active': doc.fechaExpedicion!=undefined}"
+                                (click)="delete_doc(doc)" [disabled]="doc.fechaExpedicion==undefined"></button>
+                        <button mat-icon-button [ngClass]="{'btn-tick-disabled': doc.fechaExpedicion==undefined, 'btn-tick-active': doc.fechaExpedicion!=undefined}"
+                                [disabled]="doc.fechaExpedicion==undefined"></button>
+                        <button mat-icon-button [ngClass]="{'btn-i-disabled': doc.fechaExpedicion==undefined, 'btn-i-active': doc.fechaExpedicion!=undefined}"
+                                [disabled]="doc.fechaExpedicion==undefined"></button>
                       </th>
                       <td>{{doc.documento}}</td>
-                      <td>{{doc.expedido}}</td>
+                      <td>{{doc.fechaExpedicion}}</td>
                       <td>{{doc.caduca}}</td>
-                      <td><button mat-icon-button class="btn-adj"></button></td>
-                      <td><mat-icon style="background-color: #46a35e; border-radius: 20px"></mat-icon></td>
+                      <td><button mat-icon-button [ngClass]="{'btn-adj-disabled': doc.pathDestinoAdjunto==undefined, 'btn-adj-active': doc.pathDestinoAdjunto!=undefined}"
+                                [disabled]="doc.fechaExpedicion==undefined"></button></td>
+                      <td><mat-icon [ngClass]="{'rojo': doc.situacionDocumental==1, 'verde': doc.situacionDocumental==2, 'ambar': doc.situacionDocumental==3}"></mat-icon></td>
                     </tr>
                   </tbody>
                 </table>
@@ -43,8 +52,7 @@
           </tbody>
         </table>
       </ng-container>
-      <label style="color: white">Showing {{people.length}}</label>
+      <label style="color: white">Showing {{docsPorPersona.length}}</label>
     </div>
-    -->
   </div>
 </div>

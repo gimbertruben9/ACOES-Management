@@ -1,0 +1,78 @@
+.table-content {
+  margin-top: 25px;
+  width: 1200px;
+  height: 600px;
+  border: 1px solid white;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal */
+  justify-content: start; /* vertical */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(#015d96, #75c9f6);
+}
+
+.bold-text {
+  font-weight: bold;
+  color: white;
+}
+
+.doc-info {
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #029ef1;
+  color: white;
+  width: 400px;
+}
+
+.doc-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.inputs-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-input {
+  height: 150px;
+  width: 400px;
+  resize: none;
+}
+
+.inputs-group {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 75px;
+}
+
+.btn-cancel {
+  width: 85px;
+  color: black;
+  border-radius: 10px;
+  background-color: #9ad8ff;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn-save {
+  width: 85px;
+  color: black;
+  border-radius: 10px;
+  background-color: #9ad8ff;
+  margin-left: 5px;
+  margin-right: 5px;
+}

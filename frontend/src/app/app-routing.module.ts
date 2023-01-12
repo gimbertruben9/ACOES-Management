@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'projects-list', component: ProjectsListComponent, pathMatch: 'full'},
   {path: 'people-list', component: PeopleListComponent, pathMatch: 'full'},
   {path: 'documents-list', component: DocumentsListComponent, pathMatch: 'full'},
-  {path: 'documents-form', component: DocumentsFormComponent, pathMatch: 'full'},
+  {path: 'documents-form/:idDetalle', component: DocumentsFormComponent, pathMatch: 'full'},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

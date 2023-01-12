@@ -1,1 +1,58 @@
-<h1>hello world</h1>
+<div class="page-content">
+  <div class="table-content">
+    <div style="padding: 25px">
+      <div>
+        <h3 class="bold-text">Subir Documento Trabajador</h3>
+        <div class="doc-form">
+          <div>
+            <div class="doc-info">
+              <p class="bold-text">Fundación/Empresa</p>
+              <p style="margin-left: 15px">{{org}}</p>
+              <p class="bold-text">Trabajador</p>
+              <p style="margin-left: 15px">{{trabajador}}</p>
+              <p class="bold-text">Documento</p>
+              <p disabled style="margin-left: 15px">{{detalle.documento}}</p>
+              <p class="bold-text">Descripción documento</p>
+              <p style="margin-left: 15px">{{detalle.descripcionDocumento}}</p>
+              <p class="bold-text">Tipo de Documento</p>
+              <p style="margin-left: 15px">{{detalle.tipoDocumento}}</p>
+            </div>
+          </div>
+          <div class="inputs-group">
+            <div class="doc-form">
+              <div style="text-align: right">
+                <h3 class="bold-text">Fecha Expedición</h3>
+                <br>
+                <h3 class="bold-text">Notas</h3>
+              </div>
+              <div style="margin-left: 15px" class="inputs-form">
+                <input id="fechaExpedicion" type="date" style="width: 85px" [(ngModel)]="detalle.fechaExpedicion" max="{{date}}">
+                <br><br>
+                <textarea class="comment-input" [(ngModel)]="detalle.comentario"></textarea>
+              </div>
+            </div>
+            <br><br>
+            <div class="doc-form">
+              <div style="margin-left: 15px">
+                <h3 class="bold-text">Fichero Adjunto</h3>
+              </div>
+              <div style="margin-left: 15px">
+                <input style="width: 400px" class="form-control form-control-sm" type="file" id="formFile" (change)="onFileSelected($event)">
+                <p>{{detalle.nombreAdjuntoOriginal}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="btn btn-cancel" (click)="onCancel()">
+          Cancelar
+          </button>
+          <button [disabled]="detalle.fechaExpedicion==undefined || detalle.comentario==undefined || detalle.nombreAdjuntoOriginal==undefined"
+                  class="btn btn-save" (click)="onAccept()">
+          Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

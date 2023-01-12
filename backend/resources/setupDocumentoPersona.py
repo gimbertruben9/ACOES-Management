@@ -70,3 +70,27 @@ class SetupDocumentoPersona(Resource):
                 return {"message": "An error occurred inserting the setupDocumentoPersona."}, 500
 
             return {'setupDocumentoPersona': setupDoc.json()}, 200 if setupDoc else 404
+
+
+class SetupDocumentoPersonaList(Resource):
+
+    def get(self, idTipoVinculacion=None):
+
+        if idTipoVinculacion is None:
+            allSetups = SetupDocumentoPersonaModel.get_all()
+            setups = []
+
+            for setup in allSetups:
+                setups.append(setup.json())
+
+            return {'setupsDocumentoPersona': setups}, 200 if setups else 404
+
+        else:
+            allSetups = SetupDocumentoPersonaModel.get_all_by_vinc(idTipoVinculacion)
+            setups = []
+
+            for setup in allSetups:
+                setups.append(setup.json())
+
+            return {'setupsDocumentoPersona': setups}, 200 if setups else 404
+

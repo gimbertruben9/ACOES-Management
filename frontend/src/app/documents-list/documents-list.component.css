@@ -29,31 +29,62 @@
   margin-right: 10px;
 }
 
-.btn-delete {
+.btn-delete-active {
   height: 20px;
   width: 20px;
   background-image: url("https://img.icons8.com/ios-glyphs/20/FFFFFF/filled-trash.png");
   margin-right: 10px;
 }
 
-.btn-tick {
+.btn-delete-disabled {
+  height: 20px;
+  width: 20px;
+  background-image: url("https://img.icons8.com/ios-glyphs/20/FFFFFF/filled-trash.png");
+  margin-right: 10px;
+  opacity: 0.3;
+}
+
+.btn-tick-active {
   height: 20px;
   width: 20px;
   background-image: url("https://img.icons8.com/material-outlined/20/FFFFFF/checkmark--v1.png");
   margin-right: 10px;
 }
 
-.btn-i {
+.btn-tick-disabled {
+  height: 20px;
+  width: 20px;
+  background-image: url("https://img.icons8.com/material-outlined/20/FFFFFF/checkmark--v1.png");
+  margin-right: 10px;
+  opacity: 0.3;
+}
+
+.btn-i-active {
   height: 20px;
   width: 20px;
   background-image: url("https://img.icons8.com/ios/20/FFFFFF/info--v1.png");
   margin-right: 10px;
 }
 
-.btn-adj {
+.btn-i-disabled {
+  height: 20px;
+  width: 20px;
+  background-image: url("https://img.icons8.com/ios/20/FFFFFF/info--v1.png");
+  margin-right: 10px;
+  opacity: 0.3;
+}
+
+.btn-adj-active {
   height: 30px;
   width: 30px;
   background-image: url("https://img.icons8.com/material-outlined/30/FFFFFF/document--v1.png");
+}
+
+.btn-adj-disabled {
+  height: 30px;
+  width: 30px;
+  background-image: url("https://img.icons8.com/material-outlined/30/FFFFFF/document--v1.png");
+  opacity: 0.3;
 }
 
 .header_fijo {
@@ -79,7 +110,8 @@
 }
 
 th {
-  width: 172px;
+  width: 192px;
+  text-align: center;
 }
 
 tbody th {
@@ -87,7 +119,8 @@ tbody th {
 }
 
 td {
-  width: 172px;
+  width: 184px;
+  text-align: center;
 }
 
 .tabla-anidada {
@@ -100,4 +133,24 @@ td {
   display: block;
   overflow: auto;
   height: auto;
+}
+
+.doc-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.verde {
+  background-color: #47c769;
+  border-radius: 20px;
+}
+
+.rojo {
+  background-color: #c73f3f;
+  border-radius: 20px;
+}
+
+.ambar {
+  background-color: #e8b942;
+  border-radius: 20px;
 }

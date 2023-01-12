@@ -41,23 +41,23 @@ import { DocumentsFormComponent } from './documents-form/documents-form.componen
     DocumentsFormComponent,
     EditProjectFormComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatRadioModule,
-    MatButtonToggleModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatInputModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatRadioModule,
+        MatButtonToggleModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatInputModule,
+        BrowserAnimationsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

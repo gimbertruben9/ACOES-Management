@@ -20,4 +20,5 @@ export interface Person {
   idContrato: string;
   idProyecto: string;
   expand?: boolean;
+  situacionDocumental?: number;
 }
